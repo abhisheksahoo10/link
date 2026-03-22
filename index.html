@@ -6,62 +6,498 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="web-icon.png">
   <script src="https://cdn.tailwindcss.com"></script>
-  <title>Abhishek.sibuly ✅</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+  <title>Abhishek.sibuly</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .brutal-shadow {
+      box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+    }
+
+    .brutal-shadow-lg {
+      box-shadow: 10px 10px 0px rgba(0, 0, 0, 1);
+    }
+
+    .brutal-shadow-hover:hover {
+      box-shadow: 8px 8px 0px rgba(0, 0, 0, 1);
+      transform: translate(-2px, -2px);
+    }
+
+    /* Animated Background */
+    .animated-bg {
+      background: linear-gradient(-45deg, #fde047, #86efac, #34d399, #10b981);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating shapes */
+    .floating-shape {
+      position: absolute;
+      border: 4px solid #000;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .shape-1 {
+      width: 80px;
+      height: 80px;
+      background: #fbbf24;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 60px;
+      height: 60px;
+      background: #34d399;
+      border-radius: 50%;
+      top: 20%;
+      right: 8%;
+      animation-delay: 1s;
+    }
+
+    .shape-3 {
+      width: 70px;
+      height: 70px;
+      background: #f97316;
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      bottom: 20%;
+      left: 10%;
+      animation-delay: 2s;
+    }
+
+    .shape-4 {
+      width: 50px;
+      height: 50px;
+      background: #10b981;
+      top: 60%;
+      right: 15%;
+      animation-delay: 1.5s;
+    }
+
+    /* Profile image animation */
+    @keyframes rotate-border {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .profile-container {
+      position: relative;
+      /* animation: fadeInDown 0.8s ease-out; */
+    }
+
+    /* .profile-border {
+      animation: rotate-border 20s linear infinite;
+    } */
+
+    /* Link animations */
+    .link-item {
+      transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      animation: fadeInUp 0.6s ease-out backwards;
+    }
+
+    .link-item:nth-child(1) { animation-delay: 0.1s; }
+    .link-item:nth-child(2) { animation-delay: 0.2s; }
+    .link-item:nth-child(3) { animation-delay: 0.3s; }
+    .link-item:nth-child(4) { animation-delay: 0.4s; }
+    .link-item:nth-child(5) { animation-delay: 0.5s; }
+    .link-item:nth-child(6) { animation-delay: 0.6s; }
+    .link-item:nth-child(7) { animation-delay: 0.7s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .link-item:hover {
+      transform: translate(-4px, -4px) rotate(-1deg);
+    }
+
+    .link-item:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px rgba(0, 0, 0, 1);
+    }
+
+    /* Icon bounce on hover */
+    .link-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .link-item:hover .link-icon {
+      animation: bounce 0.6s ease;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-8px); }
+      50% { transform: translateY(0); }
+      75% { transform: translateY(-4px); }
+    }
+
+    /* Title styles */
+    .title-text {
+      font-family: 'Archivo Black', sans-serif;
+      animation: fadeInDown 0.6s ease-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: backwards;
+    }
+
+    /* Glitch effect on name */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch:hover::before,
+    .glitch:hover::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .glitch:hover::before {
+      animation: glitch-1 0.3s infinite;
+      color: #f97316;
+      z-index: -1;
+    }
+
+    .glitch:hover::after {
+      animation: glitch-2 0.3s infinite;
+      color: #10b981;
+      z-index: -2;
+    }
+
+    @keyframes glitch-1 {
+      0%, 100% { transform: translate(0); }
+      33% { transform: translate(-2px, 2px); }
+      66% { transform: translate(2px, -2px); }
+    }
+
+    @keyframes glitch-2 {
+      0%, 100% { transform: translate(0); }
+      33% { transform: translate(2px, -2px); }
+      66% { transform: translate(-2px, 2px); }
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #fde047;
+      border-left: 3px solid #000;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #10b981;
+      border: 3px solid #000;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #059669;
+    }
+
+    /* Ripple effect container */
+    .ripple {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .ripple:active::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Badge styles */
+    .badge {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
 </head>
-<body class=" bg-gradient-to-b from-yellow-300 via-green-200 to-emerald-200">
-  <div class="flex flex-col items-center m-10 mx-3 ">
-    <a href="https://abhisheksahoo10-portfolio.netlify.app"
-      class="w-40 h-40 bg-gradient-to-b from-orange-300 via-green-500 to-emerald-900 p-6 overflow-hidden rounded-full drop-shadow-xl border-4 border-green-900 ">
-      <img src="DSC_0330.png" class="relative mb-5" />
-    </a>
-    <div class="mt-3 justify-center">
-      <p class="font-semibold text-center drop-shadow-lg">Hello , I'm</p>
-      <p
-        class="text-2xl font-extrabold drop-shadow-xl text-center bg-gradient-to-r from-orange-600 via-green-700 to-lime-600 inline-block text-transparent bg-clip-text">
-        Abhishek Sahoo
-      </p>
-    </div>
-  </div>
-  <div class=" w-full">
-    <div class="m-5 sm:mx-20 md:mx-40 lg:mx-56 lg:px-10 mt-1">
-      <a href="https://abhisheksahoo10-portfolio.netlify.app"
-        class="flex items-center  m-3 p-3 rounded-lg bg-slate-100 drop-shadow-md">
-        <img src="web-icon.png" class="h-auto w-10 p-1 mx-2 my-1.5" />
-        <p class="font-bold mx-3">Portfolio</p>
-      </a>
-      <a href="https://www.instagram.com/abhishek.sibuly/"
-        class="flex items-center  m-3 p-3 rounded-lg bg-slate-100 drop-shadow-md">
-        <img src="instagram.svg" class="h-10 w-10 mx-2" />
-        <p class="font-bold mx-3">instagram</p>
-      </a>
-      <a href="https://www.facebook.com/abhishek.sahoo.9250595"
-        class="flex items-center  m-3 p-3 rounded-lg bg-slate-100 drop-shadow-md">
-        <img src="facebook.svg" class="h-10 w-10 mx-2" />
-        <p class="font-bold mx-3">facebook</p>
-      </a>
-      <a href="https://twitter.com/Abhishek_1240"
-        class="flex items-center  m-3 p-3 rounded-lg bg-slate-100 drop-shadow-md">
-        <img src="Twitter X.svg" class="h-10 w-10 mx-2" />
-        <p class="font-bold mx-3">twitter</p>
-      </a>
-      <a href="https://www.linkedin.com/in/abhishek-sahoo-5080x/"
-        class="flex items-center  m-3 p-3 rounded-lg bg-slate-100 drop-shadow-md">
-        <img src="in.svg" class="h-10 w-10 mx-2" />
-        <p class="font-bold mx-3">linkedin</p>
-      </a>
-      <a href="mailto:abhisheksahoo2018@gmail.com"
-        class="flex items-center  m-3 p-3 rounded-lg bg-slate-100 drop-shadow-md">
-        <img src="gmail.svg" class="h-10 w-10 mx-2 p-1" />
-        <p class="font-bold mx-3">gmail</p>
-      </a>
-      <a href="https://wa.me/+917735644585" class="flex items-center   m-3 p-3 rounded-lg bg-slate-100 drop-shadow-md">
-        <img src="whatsapp.svg" class="h-10 w-10 mx-2" />
-        <p class="font-bold mx-3">whatsapp</p>
-      </a>
-    </div>
+
+<body class="animated-bg min-h-screen relative">
+  
+  <!-- Floating Shapes Background -->
+  <div class="floating-shape shape-1"></div>
+  <div class="floating-shape shape-2"></div>
+  <div class="floating-shape shape-3"></div>
+  <div class="floating-shape shape-4"></div>
+
+  <!-- Main Container -->
+  <div class="relative z-10">
     
+    <!-- Profile Section -->
+    <div class="flex flex-col items-center pt-10 px-3">
+      
+      <!-- Profile Image Container -->
+      <div class="profile-container mb-6">
+        <a href="https://abhisheksahoo10-portfolio.netlify.app"
+          class="relative block w-40 h-40 profile-border bg-gradient-to-br from-orange-400 via-green-500 to-emerald-700 p-1.5 rounded-full border-[6px] border-black brutal-shadow-lg hover:scale-105 " transition-transform duration-300>
+          <div class="w-full h-full rounded-full overflow-hidden border-4 border-white">
+            <img src="20260222_154136.jpg" class="w-full h-full object-cover" alt="Abhishek Sahoo"/>
+          </div>
+        </a>
+      </div>
+
+      <!-- Verified Badge -->
+      <!-- <div class="badge inline-flex items-center gap-2 bg-green-500 border-4 border-black px-4 py-1.5 brutal-shadow mb-3">
+        <span class="text-2xl">✅</span>
+        <span class="font-bold text-black">VERIFIED</span>
+      </div> -->
+
+      <!-- Name and Title -->
+      <div class="text-center mb-2">
+        <p class="font-semibold text-lg mb-1 text-black">Hello, I'm</p>
+        <h1 class="title-text text-4xl md:text-5xl font-black text-black mb-2 glitch" data-text="ABHISHEK SAHOO">
+          ABHISHEK SAHOO
+        </h1>
+        <p class="font-bold text-lg bg-white border-4 border-black inline-block px-6 py-2 brutal-shadow transform -rotate-1">
+          @abhishek.sibuly
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Links Section -->
+    <div class="w-full mt-10 pb-20">
+      <div class="max-w-2xl mx-auto px-5 sm:px-8 md:px-12">
+        
+        <!-- Portfolio Link -->
+        <a href="https://abhisheksahoo10-portfolio.netlify.app"
+          class="link-item ripple flex items-center gap-4 m-3 p-4 rounded-none bg-white border-[5px] border-black brutal-shadow-hover">
+          <div class="link-icon w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 border-4 border-black flex items-center justify-center transform -rotate-3">
+            <img src="web-icon.png" class="w-8 h-8" alt="Portfolio"/>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-xl text-black">Portfolio</p>
+            <p class="text-sm text-gray-600">View my work & projects</p>
+          </div>
+          <span class="text-2xl">→</span>
+        </a>
+
+        <!-- Instagram Link -->
+        <a href="https://www.instagram.com/abhishek.sibuly/"
+          class="link-item ripple flex items-center gap-4 m-3 p-4 rounded-none bg-white border-[5px] border-black brutal-shadow-hover">
+          <div class="link-icon w-14 h-14 bg-gradient-to-br from-pink-500 to-purple-600 border-4 border-black flex items-center justify-center transform rotate-2">
+            <img src="instagram.svg" class="w-9 h-9" alt="Instagram"/>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-xl text-black">Instagram</p>
+            <p class="text-sm text-gray-600">Follow my journey</p>
+          </div>
+          <span class="text-2xl">→</span>
+        </a>
+
+        <!-- Facebook Link -->
+        <a href="https://www.facebook.com/abhishek.sahoo.9250595"
+          class="link-item ripple flex items-center gap-4 m-3 p-4 rounded-none bg-white border-[5px] border-black brutal-shadow-hover">
+          <div class="link-icon w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 border-4 border-black flex items-center justify-center transform -rotate-1">
+            <img src="facebook.svg" class="w-9 h-9" alt="Facebook"/>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-xl text-black">Facebook</p>
+            <p class="text-sm text-gray-600">Connect with me</p>
+          </div>
+          <span class="text-2xl">→</span>
+        </a>
+
+        <!-- Twitter Link -->
+        <a href="https://twitter.com/Abhishek_1240"
+          class="link-item ripple flex items-center gap-4 m-3 p-4 rounded-none bg-white border-[5px] border-black brutal-shadow-hover">
+          <div class="link-icon w-14 h-14 bg-black border-4 border-black flex items-center justify-center transform rotate-3">
+            <img src="Twitter X.svg" class="w-9 h-9" alt="Twitter"/>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-xl text-black">Twitter / X</p>
+            <p class="text-sm text-gray-600">Latest updates</p>
+          </div>
+          <span class="text-2xl">→</span>
+        </a>
+
+        <!-- LinkedIn Link -->
+        <a href="https://www.linkedin.com/in/abhishek-sahoo-5080x/"
+          class="link-item ripple flex items-center gap-4 m-3 p-4 rounded-none bg-white border-[5px] border-black brutal-shadow-hover">
+          <div class="link-icon w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-800 border-4 border-black flex items-center justify-center transform -rotate-2">
+            <img src="in.svg" class="w-9 h-9" alt="LinkedIn"/>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-xl text-black">LinkedIn</p>
+            <p class="text-sm text-gray-600">Professional network</p>
+          </div>
+          <span class="text-2xl">→</span>
+        </a>
+
+        <!-- Gmail Link -->
+        <a href="mailto:abhisheksahoo2018@gmail.com"
+          class="link-item ripple flex items-center gap-4 m-3 p-4 rounded-none bg-white border-[5px] border-black brutal-shadow-hover">
+          <div class="link-icon w-14 h-14 bg-gradient-to-br from-red-500 to-red-700 border-4 border-black flex items-center justify-center transform rotate-1">
+            <img src="gmail.svg" class="w-8 h-8" alt="Gmail"/>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-xl text-black">Gmail</p>
+            <p class="text-sm text-gray-600">Email me directly</p>
+          </div>
+          <span class="text-2xl">→</span>
+        </a>
+
+        <!-- WhatsApp Link -->
+        <a href="https://wa.me/+917735644585"
+          class="link-item ripple flex items-center gap-4 m-3 p-4 rounded-none bg-white border-[5px] border-black brutal-shadow-hover">
+          <div class="link-icon w-14 h-14 bg-gradient-to-br from-green-500 to-green-700 border-4 border-black flex items-center justify-center transform -rotate-3">
+            <img src="whatsapp.svg" class="w-9 h-9" alt="WhatsApp"/>
+          </div>
+          <div class="flex-1">
+            <p class="font-bold text-xl text-black">WhatsApp</p>
+            <p class="text-sm text-gray-600">Chat with me</p>
+          </div>
+          <span class="text-2xl">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center pb-8 px-4">
+      <div class="inline-block bg-black text-white border-4 border-black px-6 py-3 brutal-shadow-lg transform rotate-1">
+        <p class="font-bold">A Neo-Brutalist concept by Abhishek.</p>
+        <p class="text-sm text-gray-300 mt-1">© 2026 All Rights Reserved</p>
+      </div>
+    </div>
+
   </div>
-  <DIV class="h-20"></DIV>
+
+  <script>
+    // Add smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add entrance animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Parallax effect for floating shapes
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const shapes = document.querySelectorAll('.floating-shape');
+      shapes.forEach((shape, index) => {
+        const speed = (index + 1) * 0.3;
+        shape.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
+      });
+    });
+
+    // Add click ripple effect
+    document.querySelectorAll('.ripple').forEach(element => {
+      element.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple-effect');
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      });
+    });
+
+    // Random rotation on page load for links
+    window.addEventListener('load', () => {
+      const links = document.querySelectorAll('.link-item');
+      links.forEach(link => {
+        const randomRotation = (Math.random() - 0.5) * 2;
+        link.style.setProperty('--random-rotation', `${randomRotation}deg`);
+      });
+    });
+  </script>
 
 </body>
 
